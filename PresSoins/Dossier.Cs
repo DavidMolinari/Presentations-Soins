@@ -23,6 +23,7 @@ namespace classesMetier
         /// <param name="prenomPatient"></param>
         /// <param name="dateNaissancePatient"></param>
         /// <param name="mesPrestations"></param>
+        public Dossier() { }
         public Dossier(string nomPatient, string prenomPatient, DateTime dateNaissancePatient, List<Prestation> mesPrestations)
         {
             this.NomPatient = nomPatient;
@@ -93,7 +94,17 @@ namespace classesMetier
         /// <returns></returns>
         public int getNbJoursSoins()
         {
-            MesPrestations.Sort();
+            List<DateTime> datesTemp = new List<DateTime>();
+            foreach (Prestation Meh in MesPrestations)
+            {
+                if (MesPrestations.Contains(Meh))
+                {
+                    datesTemp.Add(Meh.DateSoin);
+                }
+            }
+            return datesTemp.Count();
+
+            /*
             int i = 0;
             var temp = MesPrestations[0];
             foreach (Prestation p in MesPrestations)
@@ -102,6 +113,11 @@ namespace classesMetier
                 temp = MesPrestations[i];
             }
             return 0;
+            */
+        }
+        public override string ToString()
+        {
+            return NomPatient.ToString() + " " + PrenomPatient.ToString() + " " + DateNaissancePatient.ToShortDateString();
         }
 
     }

@@ -29,7 +29,33 @@ namespace classesMetier
             this.DateSoin = dateSoin;
             this.HeureSoin = heureSoin;
             this.L_intervenant = intervenant;
+
+
         }
+        public Prestation()
+        {
+
+        }
+        /// <summary>
+        /// Permet de comparer une date à une autre, Seulement le JOUR / MOIS / ANNEE et non les heures
+        /// retourne : 
+        /// 0 Si elles sont égales
+        /// 1 Si la date est supérieur
+        /// -1 si la date est inférieur
+        /// </summary>
+        /// <param name="unePrestation"></param>
+        /// <returns></returns>
+        public int compareTo(Prestation unePrestation)
+        {
+            if (this.DateSoin.Day == unePrestation.DateSoin.Day 
+                && this.DateSoin.Month == unePrestation.DateSoin.Month 
+                && this.DateSoin.Year == unePrestation.DateSoin.Year) return 0;
+            else if (this.DateSoin.Day > unePrestation.DateSoin.Day 
+                && this.DateSoin.Month > unePrestation.DateSoin.Month 
+                && this.DateSoin.Year > unePrestation.DateSoin.Year) return 1;
+            else return -1;
+        }
+
 
     }
 }
