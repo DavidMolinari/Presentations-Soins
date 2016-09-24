@@ -47,34 +47,11 @@ namespace PresSoins
             // var xmlString = desPrestations.Serialize();
             // Utilisation de la bibliothéque LINQ
 
+            string fileName = "jeudEssai.xml";
+            string path = Path.Combine(Environment.CurrentDirectory, @"Data\", fileName);
+            XDocument doc = XDocument.Load(path);
 
-
-
-
-
-            XDocument doc = new XDocument(new XElement("root",
-                                                       new XElement("Dossier",
-                                                           new XElement("NomPatient", dossierUnePrestation.NomPatient.ToString()),
-                                                           new XElement("PrenomPatient", dossierUnePrestation.NomPatient.ToString()),
-                                                           new XElement("PrenomPatient", dossierUnePrestation.DateNaissancePatient.ToShortDateString()),
-                                                                new XElement("Prestation", 
-                                                                    new XElement("Libelle", dossierUnePrestation.UnePrestation.Libelle.ToString()),
-                                                                    new XElement("DateSoin", dossierUnePrestation.UnePrestation.DateSoin.ToShortDateString()),
-                                                                    new XElement("HeureSoin", dossierUnePrestation.UnePrestation.HeureSoin.ToShortTimeString()),
-                                                                        new XElement("Intervenant",
-                                                                            new XElement("Nom", dossierUnePrestation.UnePrestation.L_intervenant.Nom.ToString()),
-                                                                            new XElement("Prenom", dossierUnePrestation.UnePrestation.L_intervenant.Prenom.ToString())))
-
-
-
-
-                                                           ))); ;
-
-            doc.Save("C:\\document.xml");
-
-
-            Console.WriteLine(doc);
-            Console.ReadKey();
+            //Console.WriteLine(doc.ToString());
 
 
 
