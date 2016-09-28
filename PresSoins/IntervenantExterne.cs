@@ -20,12 +20,16 @@ namespace classesMetier
         /// <param name="specialite"></param>
         /// <param name="adresse"></param>
         /// <param name="tel"></param>
-         public IntervenantExterne(string nom, string prenom, List<Prestation> lesPrestations, string specialite, string adresse, string tel) : base(nom, prenom, lesPrestations)
+         public IntervenantExterne(string nom, string prenom, string specialite, string adresse, string tel) : base(nom, prenom)
         {
             this.Specialite = specialite;
             this.Adresse = adresse;
             this.Tel = tel;
         }
 
+        public override string ToString()
+        {
+            return base.ToString() + " " + Specialite + " " + Adresse + " " + Tel;
+        }
     }
 }

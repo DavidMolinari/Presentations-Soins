@@ -9,7 +9,7 @@ namespace classesMetier
     /// <summary>
     /// 
     /// </summary>
-   public class Intervenant
+    public class Intervenant
     {
         public string Nom { get; }
         public string Prenom { get; }
@@ -21,11 +21,10 @@ namespace classesMetier
         /// <param name="nom"></param>
         /// <param name="prenom"></param>
         /// <param name="lesPrestations"></param>
-        public Intervenant(string nom, string prenom, List<Prestation>lesPrestations)
+        public Intervenant(string nom, string prenom)
         {
             this.Nom = nom;
             this.Prenom = prenom;
-            this.LesPrestations = lesPrestations;
         }
         /// <summary>
         /// Permet d'ajouter une Prestation à une collection de Prestations
@@ -34,6 +33,11 @@ namespace classesMetier
         public void ajouterPrestation(Prestation unePrestation)
         {
             this.LesPrestations.Add(unePrestation);
+        }
+
+        public override string ToString()
+        {
+            return Nom + " - " + Prenom + " " ;
         }
     }
 }

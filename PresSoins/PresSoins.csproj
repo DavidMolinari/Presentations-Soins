@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dossier.cs" />
+    <Compile Include="GestionXML.cs" />
     <Compile Include="Intervenant.cs" />
     <Compile Include="IntervenantExterne.cs" />
     <Compile Include="Prestation.cs" />

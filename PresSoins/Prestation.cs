@@ -56,6 +56,12 @@ namespace classesMetier
             else return -1;
         }
 
+        public override string ToString()
+        {
+            return Libelle + " " + DateSoin + " " + HeureSoin + " " + L_intervenant.ToString();
+
+        }
+
 
     }
 }

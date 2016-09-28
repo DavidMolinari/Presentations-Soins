@@ -117,7 +117,7 @@ namespace classesMetier
         }
         public override string ToString()
         {
-            return NomPatient.ToString() + " " + PrenomPatient.ToString() + " " + DateNaissancePatient.ToShortDateString();
+            return NomPatient + " " + PrenomPatient + " " + DateNaissancePatient;
         }
 
     }
