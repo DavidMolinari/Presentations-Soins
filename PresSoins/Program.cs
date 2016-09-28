@@ -47,15 +47,15 @@ namespace PresSoins
             // var xmlString = desPrestations.Serialize();
             // Utilisation de la bibliothéque LINQ
 
+
             string fileName = "jeudEssai.xml";
             string path = Path.Combine(Environment.CurrentDirectory, @"Data\", fileName);
-            XDocument doc = XDocument.Load(path);
-
-            //Console.WriteLine(doc.ToString());
-
+            XmlDocument doc = new XmlDocument();
+            doc.Load(path);
 
 
-           // Console.WriteLine(unePrestation.ToString() + "\n" + xmlString.ToString());
+
+            // Console.WriteLine(unePrestation.ToString() + "\n" + xmlString.ToString());
 
 
         }
