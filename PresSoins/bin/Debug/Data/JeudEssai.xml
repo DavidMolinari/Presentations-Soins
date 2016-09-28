@@ -85,6 +85,24 @@
             <dd>14</dd>
         </datenaissance>
     </dossier>
+	    <dossier>
+        <nom>Blanc</nom>
+        <prenom>Sophie</prenom>
+        <datenaissance>
+            <yyyy>1995</yyyy>
+            <mm>9</mm>
+            <dd>14</dd>
+        </datenaissance>
+    </dossier>
+	    <dossier>
+        <nom>Blanc</nom>
+        <prenom>Sophie</prenom>
+        <datenaissance>
+            <yyyy>1995</yyyy>
+            <mm>9</mm>
+            <dd>14</dd>
+        </datenaissance>
+    </dossier>
 	<dossier>
         <nom>Robert</nom>
         <prenom>Jean</prenom>

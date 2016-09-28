@@ -29,10 +29,10 @@ namespace PresSoins
             doc.Load(path);
 
             XmlNodeList lesPrestations = doc.GetElementsByTagName("prestations");
-            XmlNodeList listeDossiers = doc.GetElementsByTagName("dossier");
+           XmlNodeList listeDossiers = doc.GetElementsByTagName("dossier");
             XmlNodeList lesIntervenants = doc.GetElementsByTagName("intervenant");
 
-
+            /*
             // Date de naissance dossier Vide
             DateTime dateDossierVide = new DateTime(
                 Convert.ToInt32(listeDossiers[0].ChildNodes[2].ChildNodes[0].InnerXml), 
@@ -40,7 +40,7 @@ namespace PresSoins
                 Convert.ToInt32(listeDossiers[0].ChildNodes[2].ChildNodes[2].InnerXml));
             // Instantiation d'un dossier vide
             Dossier unDossierVide = new Dossier(listeDossiers[0].ChildNodes[0].InnerXml, listeDossiers[0].ChildNodes[1].InnerXml, dateDossierVide);
-
+            */
             // Date Naissance Dossier une seule Prestation
             DateTime dateDossierUnePres = new DateTime(
                Convert.ToInt32(listeDossiers[2].ChildNodes[2].ChildNodes[0].InnerXml),
@@ -71,7 +71,14 @@ namespace PresSoins
             // Dossier avec une Prestation
             Dossier unDossierUnePrestation = new Dossier(listeDossiers[2].ChildNodes[0].InnerXml, listeDossiers[2].ChildNodes[1].InnerXml, dateDossierUnePres, unePrestation); ///FIXME PRESTATIONS
 
-            Console.WriteLine(unDossierVide.ToString() + " meh ");
+
+
+            //GestionXML.initDossiersVides(doc);
+
+
+
+
+            Console.Read();
         }
     }
 }
