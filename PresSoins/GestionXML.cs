@@ -8,26 +8,61 @@ using System.Xml;
 
 namespace PresSoins
 {
-    public static class GestionXML
+    public abstract class GestionXML
     {
 
-        public static void initDossiersVides(XmlDocument myDoc, List<Dossier> mesDossier)
+        public static Dossier XMLToDossier(XmlNode node)
         {
-            XmlNodeList listeDossiers = myDoc.GetElementsByTagName("dossier");
-            XmlNodeList xmlMeh = myDoc.GetElementsByTagName("Dossiers");
-            foreach (XmlNode item in xmlMeh)
+            var nom = node.ChildNodes[0].InnerText;
+            var prenom = node.ChildNodes[1].InnerText;
+            DateTime ddn = new DateTime(Convert.ToInt32(node.ChildNodes[2].ChildNodes[0].InnerText),
+                Convert.ToInt32(node.ChildNodes[2].ChildNodes[1].InnerText),
+                Convert.ToInt32(node.ChildNodes[2].ChildNodes[2].InnerText));
+            
+            // Si le dossier contient un Intervenant
+            if (node.SelectSingleNode("intervenant") == null)
             {
-                if (item.SelectSingleNode("\\prestations") == null)
-                {
-                    DateTime dateDossierVide = new DateTime(
-                    Convert.ToInt32(listeDossiers[0].ChildNodes[2].ChildNodes[0].InnerXml),
-                    Convert.ToInt32(listeDossiers[0].ChildNodes[2].ChildNodes[1].InnerXml),
-                    Convert.ToInt32(listeDossiers[0].ChildNodes[2].ChildNodes[2].InnerXml));
-                    // Instantiation d'un dossier vide
-                    Dossier unDossierVide = new Dossier(listeDossiers[0].ChildNodes[0].InnerXml, listeDossiers[0].ChildNodes[1].InnerXml, dateDossierVide);
-                } 
+                
+                return new Dossier();
             }
-
+            else if (node.SelectSingleNode("prestation") == null)
+            {
+                return new Dossier();
+            }
+            else return new Dossier(nom, prenom, ddn);
         }
+
+        public static Prestation XMLToPrestation(XmlNode node)
+        {
+
+
+            Prestation unePres = new Prestation();
+            return unePres;
+        }
+
+        public static DateTime getDatePrestation(XmlNode node)
+        {
+            return new DateTime();
+        }
+        public static DateTime getHeurePrestation(XmlNode node)
+        {
+            
+            return new DateTime();
+        }
+
+        public static Intervenant XMLToIntervenant(XmlNode node)
+        {
+            string nomIntervenant = node.ChildNodes[0].InnerText;
+            string prenomIntervenant = node.ChildNodes[1].InnerText;
+            if (node.SelectSingleNode("specialite") == null)
+            {
+                return new Intervenant(nomIntervenant, prenomIntervenant);
+            }
+            else
+            {
+                return new IntervenantExterne(nomIntervenant, prenomIntervenant, node.ChildNodes[2].InnerText, node.ChildNodes[3].InnerText, node.ChildNodes[4].InnerText);
+            }
+        }
+
     }
 }

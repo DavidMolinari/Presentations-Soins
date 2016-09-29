@@ -40,8 +40,9 @@ namespace PresSoins
                 Convert.ToInt32(listeDossiers[0].ChildNodes[2].ChildNodes[2].InnerXml));
             // Instantiation d'un dossier vide
             Dossier unDossierVide = new Dossier(listeDossiers[0].ChildNodes[0].InnerXml, listeDossiers[0].ChildNodes[1].InnerXml, dateDossierVide);
-            */
+           
             // Date Naissance Dossier une seule Prestation
+
             DateTime dateDossierUnePres = new DateTime(
                Convert.ToInt32(listeDossiers[2].ChildNodes[2].ChildNodes[0].InnerXml),
                Convert.ToInt32(listeDossiers[2].ChildNodes[2].ChildNodes[1].InnerXml),
@@ -69,13 +70,22 @@ namespace PresSoins
             Prestation unePrestation = new Prestation(lesPrestations[1].ChildNodes[0].InnerXml, datePres, heurePres, unIntervenant);
 
             // Dossier avec une Prestation
-            Dossier unDossierUnePrestation = new Dossier(listeDossiers[2].ChildNodes[0].InnerXml, listeDossiers[2].ChildNodes[1].InnerXml, dateDossierUnePres, unePrestation); ///FIXME PRESTATIONS
+            Dossier unDossierUnePrestation = new Dossier(listeDossiers[2].ChildNodes[0].InnerXml, listeDossiers[2].ChildNodes[1].InnerXml, dateDossierUnePres, unePrestation);
 
 
 
             //GestionXML.initDossiersVides(doc);
+             
+    */
 
+            Intervenant intervenant_un = GestionXML.XMLToIntervenant(lesIntervenants[0]);
+            Intervenant intervenant_deux = GestionXML.XMLToIntervenant(lesIntervenants[1]);
+            Intervenant intervenant_trois = GestionXML.XMLToIntervenant(lesIntervenants[2]);
 
+            Console.WriteLine(intervenant_un.ToString() +" \n " + intervenant_deux.ToString() + " \n" + intervenant_trois.ToString());
+
+            Dossier test = GestionXML.XMLToDossier(listeDossiers[0]);
+            Console.WriteLine(test.ToString());
 
 
             Console.Read();
