@@ -29,63 +29,17 @@ namespace PresSoins
             doc.Load(path);
 
             XmlNodeList lesPrestations = doc.GetElementsByTagName("prestations");
-           XmlNodeList listeDossiers = doc.GetElementsByTagName("dossier");
+           XmlNodeList lesDossiers = doc.GetElementsByTagName("dossier");
             XmlNodeList lesIntervenants = doc.GetElementsByTagName("intervenant");
 
-            /*
-            // Date de naissance dossier Vide
-            DateTime dateDossierVide = new DateTime(
-                Convert.ToInt32(listeDossiers[0].ChildNodes[2].ChildNodes[0].InnerXml), 
-                Convert.ToInt32(listeDossiers[0].ChildNodes[2].ChildNodes[1].InnerXml), 
-                Convert.ToInt32(listeDossiers[0].ChildNodes[2].ChildNodes[2].InnerXml));
-            // Instantiation d'un dossier vide
-            Dossier unDossierVide = new Dossier(listeDossiers[0].ChildNodes[0].InnerXml, listeDossiers[0].ChildNodes[1].InnerXml, dateDossierVide);
-           
-            // Date Naissance Dossier une seule Prestation
-
-            DateTime dateDossierUnePres = new DateTime(
-               Convert.ToInt32(listeDossiers[2].ChildNodes[2].ChildNodes[0].InnerXml),
-               Convert.ToInt32(listeDossiers[2].ChildNodes[2].ChildNodes[1].InnerXml),
-               Convert.ToInt32(listeDossiers[2].ChildNodes[2].ChildNodes[2].InnerXml));
-
-            // Heure Prestation
-            DateTime heurePres = new DateTime(
-                        Convert.ToInt32(lesPrestations[1].ChildNodes[0].ChildNodes[1].ChildNodes[0].InnerXml),
-                        Convert.ToInt32(lesPrestations[1].ChildNodes[0].ChildNodes[1].ChildNodes[1].InnerXml),
-                        Convert.ToInt32(lesPrestations[1].ChildNodes[0].ChildNodes[1].ChildNodes[2].InnerXml),
-                        Convert.ToInt32(lesPrestations[1].ChildNodes[0].ChildNodes[1].ChildNodes[3].InnerXml),
-                        Convert.ToInt32(lesPrestations[1].ChildNodes[0].ChildNodes[1].ChildNodes[4].InnerXml), 00);
-
-            // Date Prestation
-            DateTime datePres = new DateTime(
-                        Convert.ToInt32(lesPrestations[1].ChildNodes[0].ChildNodes[1].ChildNodes[0].InnerXml),
-                        Convert.ToInt32(lesPrestations[1].ChildNodes[0].ChildNodes[1].ChildNodes[1].InnerXml),
-                        Convert.ToInt32(lesPrestations[1].ChildNodes[0].ChildNodes[1].ChildNodes[2].InnerXml));
+            Dossier unDossier = GestionXML.XMLToDossier(lesDossiers[0]);
 
 
-            // Un Intervenant
-            Intervenant unIntervenant = new Intervenant(lesPrestations[1].ChildNodes[0].ChildNodes[2].ChildNodes[0].InnerXml, lesPrestations[1].ChildNodes[0].ChildNodes[2].ChildNodes[1].InnerXml);
+            GestionXML.XMLToListePrestations(lesPrestations);
 
-            // Une Prestation
-            Prestation unePrestation = new Prestation(lesPrestations[1].ChildNodes[0].InnerXml, datePres, heurePres, unIntervenant);
-
-            // Dossier avec une Prestation
-            Dossier unDossierUnePrestation = new Dossier(listeDossiers[2].ChildNodes[0].InnerXml, listeDossiers[2].ChildNodes[1].InnerXml, dateDossierUnePres, unePrestation);
+            Console.Read();
 
 
-
-            //GestionXML.initDossiersVides(doc);
-             
-    */
-
-            Intervenant intervenant_un = GestionXML.XMLToIntervenant(lesIntervenants[0]);
-            Intervenant intervenant_deux = GestionXML.XMLToIntervenant(lesIntervenants[1]);
-            Intervenant intervenant_trois = GestionXML.XMLToIntervenant(lesIntervenants[2]);
-
-            Console.WriteLine(intervenant_un.ToString() +" \n " + intervenant_deux.ToString() + " \n" + intervenant_trois.ToString());
-
-            Dossier test = GestionXML.XMLToDossier(listeDossiers[0]);
-            Console.WriteLine(test.ToString());
 
 
             Console.Read();
